@@ -19,6 +19,11 @@
 #only if subfolders with terrains exist:
 /Assets/Terrains/**/*.asset filter=lfs diff=lfs merge=lfs -text
 
+#other project-specific
+/Assets/_Packages/Oculus/Spatializer/Plugins/AudioPluginOculusSpatializer.bundle/Contents/MacOS/AudioPluginOculusSpatializer filter=lfs diff=lfs merge=lfs -text
+*.disabled filter=lfs diff=lfs merge=lfs -text
+/Assets/_Packages/TextMesh*/**/*.asset filter=lfs diff=lfs merge=lfs -text
+
 
 # Unity LFS
 *.cubemap       filter=lfs diff=lfs merge=lfs -text
@@ -33,6 +38,7 @@
 *.dae filter=lfs diff=lfs merge=lfs -text
 *.dxf filter=lfs diff=lfs merge=lfs -text
 *.fbx filter=lfs diff=lfs merge=lfs -text
+*.FBX filter=lfs diff=lfs merge=lfs -text
 *.jas filter=lfs diff=lfs merge=lfs -text
 *.lws filter=lfs diff=lfs merge=lfs -text
 *.lxo filter=lfs diff=lfs merge=lfs -text
@@ -79,6 +85,7 @@
 *.png filter=lfs diff=lfs merge=lfs -text
 *.psd filter=lfs diff=lfs merge=lfs -text
 *.tga filter=lfs diff=lfs merge=lfs -text
+*.TGA filter=lfs diff=lfs merge=lfs -text
 *.tif filter=lfs diff=lfs merge=lfs -text
 *.tiff filter=lfs diff=lfs merge=lfs -text
 
