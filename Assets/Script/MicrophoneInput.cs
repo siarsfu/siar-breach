@@ -21,7 +21,7 @@ public class MicrophoneInput : MonoBehaviour
     void Start()
     {
 
-
+        Debug.Log("recording started with " + Microphone.devices[0]);
         //get components you'll need
         audioSource = GetComponent<AudioSource>();
 

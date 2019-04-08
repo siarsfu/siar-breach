@@ -6,73 +6,92 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class Our_UI : MonoBehaviour {
-    public FlickerLights flickerLights;
-    public TMP_InputField internetData;
-    public TMP_InputField observedData;
+    //////////////////////////////////////////////////////////////////////////// FIELDS //////////////////////////////////////////////////////////////////////
+    public TMP_InputField newValue;
+    public TMP_Dropdown newKey;
+    public DisplayInit displayInit;
+
     public TMP_InputField lname;
     public TMP_InputField fname;
     public TMP_InputField phone;
     public TMP_InputField email;
     public TMP_InputField hair;
     public TMP_InputField eyes;
-    public UI_Handler ui_handler;
+    public TMP_Text otherData;
     public Text action_Button_label;
     public Button action_Button;
 
+    public FlickerLights flickerLights;
+    public UI_Handler ui_handler;
     public GameObject yogaVideoObject;
+    public GameObject yogaVideoObject2;
+    public TrailRenderer trailR;
+    public TrailRenderer trailL;
+
 
     private bool dataBreachAlreadyInitiated;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-       
-	}
 
     public void initiateYogaExercise()
     {
         yogaVideoObject.SetActive(true);
+        trailL.enabled = false;
+        trailR.enabled = false;
+    }
+
+    public void initiateYogaExercise2()
+    {
+        trailL.enabled = false;
+        trailR.enabled = false;
+        yogaVideoObject.SetActive(false);
+        yogaVideoObject2.SetActive(true);
+    }
+
+    public void initiateLightTrails()
+    {
+        trailL.enabled = true;
+        trailR.enabled = true;
+        trailR.Clear();
+        trailL.Clear();
     }
 
     public void initiateDataBreach()
     {
         if (!dataBreachAlreadyInitiated)
         {
-            //INITIATE DATA BREACH< SEND DATA TO UI_HANDLER
+            ////////////////////////// ADD INPUT FIELDS TO DATABASE ///////
+            if (!lname.text.Equals("") && !fname.text.Equals("")) {
+                ui_handler.AddKeyValue("Name", (string)(fname.text + "_" + lname.text));
+                ui_handler.AddKeyValue("FName", (string)(fname.text));
+                ui_handler.AddKeyValue("LName", (string)(lname.text));
+            }
+            if (!phone.text.Equals("")) ui_handler.AddKeyValue("Phone", (string)(phone.text));
+            if (!email.text.Equals("")) ui_handler.AddKeyValue("EMail", (string)(email.text));
+            if (!hair.text.Equals("")) ui_handler.AddKeyValue("Hair", (string)(hair.text));
+            if (!eyes.text.Equals("")) ui_handler.AddKeyValue("Eyes", (string)(eyes.text));
 
-            //front wall
-            string namePhoneEmail = "Name: " + lname.text + ", " + fname.text + "\n" + "Phone: " + phone.text + "\n" + "E-Mail: " + email.text + "\n";
-            ui_handler.set_name_phone_email_and_ui_data(namePhoneEmail);
+            ////////////////////////// SET WALLS ////////
+            ui_handler.setLeftWall();
+            ui_handler.setRightWall();
+            ui_handler.setID();
 
-            //top wall
-            string formattedname = "" + lname.text + ", \n" + fname.text;
-            ui_handler.set_ID_Card(eyes.text, hair.text, formattedname);
+            //disable trails
+            trailL.enabled = false;
+            trailR.enabled = false;
 
-            //left wall
-            ui_handler.set_internet_and_observed_data("" + internetData.text +"\n"+ observedData.text);
+            //disable yoga animations
+            yogaVideoObject.SetActive(false);
+            yogaVideoObject2.SetActive(false);
 
-            //right wall
-            //bought information
-
-           
-            ui_handler.setSoldWall(email.text);
-
-            //back wall
-            //running code
-
-            //floor?
-
-
-
-
+            //Special FX
             flickerLights.lockDownProcedures();
 
             action_Button_label.text = "INITIATING DATA BREACH, WAIT UNTIL COMPLETE";
             action_Button.interactable = false;
+
+            //switch EventSystem model back to VR
+            ui_handler.switchESbackToVR();
+            //disable our UI
+            displayInit.setDoneWithOurUI();
         }
         else { endDataBreach();  }
 
@@ -88,5 +107,16 @@ public class Our_UI : MonoBehaviour {
         flickerLights.revertToNormal();
         action_Button_label.text = "Data Breach Complete";
         action_Button.interactable = false;
+    }
+
+    public void addNewKeyValuePair()
+    {
+        //add to database
+        ui_handler.AddKeyValue(newKey.options[newKey.value].text, newValue.text);
+        //display on Screen
+        otherData.text += newKey.options[newKey.value].text + ": " + newValue.text + "\n";
+        //reset input field and dropdown
+        newKey.value = 0;
+        newValue.text = "";
     }
 }

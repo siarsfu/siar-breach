@@ -203,12 +203,14 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Update()
 	{
+        /*
 		//Use keys to ratchet rotation
 		if (Input.GetKeyDown(KeyCode.Q))
 			buttonRotation -= RotationRatchet;
 
 		if (Input.GetKeyDown(KeyCode.E))
 			buttonRotation += RotationRatchet;
+         */
 	}
 
 	protected virtual void UpdateController()
@@ -307,11 +309,12 @@ public class OVRPlayerController : MonoBehaviour
 
 		if (EnableLinearMovement)
 		{
+            /*
 			bool moveForward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
 			bool moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
 			bool moveRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
 			bool moveBack = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
-
+            
 			bool dpad_move = false;
 
 			if (OVRInput.Get(OVRInput.Button.DpadUp))
@@ -391,6 +394,7 @@ public class OVRPlayerController : MonoBehaviour
 			if (primaryAxis.x > 0.0f)
 				MoveThrottle += ort * (primaryAxis.x * transform.lossyScale.x * moveInfluence * BackAndSideDampen *
 									   Vector3.right);
+             * */
 		}
 
 		if (EnableRotation)

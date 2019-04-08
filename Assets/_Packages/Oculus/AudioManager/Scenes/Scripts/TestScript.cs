@@ -20,6 +20,7 @@ public class TestScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        /*
 	    // use attached game object location
         if ( Input.GetKeyDown( KeyCode.Alpha1 ) ) 
         {
@@ -30,6 +31,7 @@ public class TestScript : MonoBehaviour {
 		if ( Input.GetKeyDown( KeyCode.Alpha2 ) ) {
 			testSound2.PlaySoundAt( new Vector3( 5.0f, 0.0f, 0.0f ) );
 		}
+        */
 	}
 }
 

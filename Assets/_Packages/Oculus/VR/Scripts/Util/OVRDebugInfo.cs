@@ -116,11 +116,13 @@ public class OVRDebugInfo : MonoBehaviour
             InitUIComponents();
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.Space) && riftPresentTimeout < 0.0f)
         {
             initUIComponent = true;
             showVRVars ^= true;
         }
+         * */
 
         UpdateDeviceDetection();
 

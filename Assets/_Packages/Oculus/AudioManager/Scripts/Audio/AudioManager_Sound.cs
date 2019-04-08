@@ -118,9 +118,11 @@ public partial class AudioManager : MonoBehaviour {
 	*/
 	void UpdateFreeEmitters() {
 		if ( verboseLogging ) {
+            /*
 			if ( Input.GetKeyDown( KeyCode.A ) ) {
 				forceShowEmitterCount = !forceShowEmitterCount;
 			}
+            */
 			if ( forceShowEmitterCount ) {
 				showPlayingEmitterCount = true;
 			}

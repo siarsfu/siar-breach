@@ -54,11 +54,12 @@ public class OVRCubemapCapture : MonoBehaviour
 			}
 		}
 
-		// Trigger by press triggeredByKey
+		// Trigger by press triggeredByKey 
+        /*
 		if ( Input.GetKeyDown( triggeredByKey ) )
 		{
 			TriggerCubemapCapture(transform.position, cubemapSize, pathName);
-		}
+		} */
 	}
 
 	/// <summary>

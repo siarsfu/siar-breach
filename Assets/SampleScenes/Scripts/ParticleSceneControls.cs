@@ -168,11 +168,12 @@ namespace UnityStandardAssets.SceneUtils
 #if !MOBILE_INPUT
         void KeyboardInput()
         {
+            /*
             if(Input.GetKeyDown(KeyCode.LeftArrow))
                 Previous();
 
             if (Input.GetKeyDown(KeyCode.RightArrow))
-                Next();
+                Next();*/
         }
 #endif
 

@@ -6,20 +6,12 @@ using UnityEngine.Video;
 
 public class FlickerLights : MonoBehaviour
 {
-
+    //////////////////////////////////////////////////////////////////////////// FIELDS ///////////////////////////////////////////////////////////////////////
     public GameObject roomObject;
-
-    private Material roomMaterial;
-
-    private Color endColor;
-
     public GameObject[] houseObjects;
     public Renderer[] houseMats;
-
     public Light mainSceneLight;
     public Material skyboxMat;
-
-
     public GameObject[] canvases;
 
     public GameObject videoPlayerObject;
@@ -28,7 +20,6 @@ public class FlickerLights : MonoBehaviour
     public Animator animator;
 
     public UI_Handler ui_handler;
-
 
     //transition-related
     public VideoPlayer beachVideo;
@@ -45,13 +36,22 @@ public class FlickerLights : MonoBehaviour
     public GameObject robotObject;
     public GameObject yogaVideoObject;
 
+    public Material shellSkybox;
+    public Material breachSkybox;
 
-    // Start is called before the first frame update
+    public GameObject meadowAudio;
+    public GameObject adsScreens;
+
+    public AudioSource breachAmbient;
+
+    private Material roomMaterial;
+    private Color endColor;
+    private bool onMeadow = true;
+
+
+    //////////////////////////////////////////////////////////////////////////// START ///////////////////////////////////////////////////////////////////////
     void Start()
     {
-        //Renderer renderer = roomObject.GetComponent<Renderer>();
-        //roomMaterial = renderer.material;
-
         houseObjects = GameObject.FindGameObjectsWithTag("room");
         int size = houseObjects.Length;
         houseMats = new Renderer[size];
@@ -74,53 +74,9 @@ public class FlickerLights : MonoBehaviour
 
         videoPlayerObject.SetActive(false);
 
-   
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L)){
-            //dimAllLights();
-        }
-    }
-
-    public void revertToNormal(){
-        //start tvnoise
-        noiseScreens.Play();
-
-        StartCoroutine(revertProcess());
-        ui_handler.turnOffDataBreachScreens();
-    }
-
-    IEnumerator revertProcess(){
-        yield return new WaitForSeconds(1f);
-
-        tvNoiseControlTransparency.Play("tv_noise");
-
-        yield return new WaitForSeconds(4f);
-
-        video360Renderer.enabled = true;
-
-        yield return new WaitForSeconds(1f);
-
-        robotObject.SetActive(true);
-
-        tvNoiseControlTransparency.Play("tv_noise_revert");
-        beachVideo.SetDirectAudioMute(0, false);
-        alarmAnimation.enabled = false;
-        
-        //Destroy(alarmAnimation);
-        video360Renderer.material.color = Color.white;
-
-        yield return new WaitForSeconds(4f);
-
-        noiseScreens.Stop();
-
-        yield return null;
-    }
-
+    //////////////////////////////////////////////////////////////////////////// SHELL -> BREACH
     public void lockDownProcedures()
     {
         //stop playing video audio
@@ -179,6 +135,10 @@ public class FlickerLights : MonoBehaviour
         //stop showing the yoga video
         yogaVideoObject.SetActive(false);
 
+        //ROBERT: switch the skybox 
+        RenderSettings.skybox = breachSkybox;
+        meadowAudio.SetActive(false);
+
         //slowly get back transparency (to 0)
         tvNoiseControlTransparency.Play("tv_noise_restore");
 
@@ -204,9 +164,11 @@ public class FlickerLights : MonoBehaviour
         yield return new WaitForSeconds(7f);
         bootUpScreen.GetComponent<Renderer>().enabled = false;
 
+        
+
         //restore transparency back
         StartCoroutine(nextStage());
-
+        breachAmbient.Play();
 
         //now is the time to slowly start switching on skybox
         breakerSwitch.Play();
@@ -218,6 +180,11 @@ public class FlickerLights : MonoBehaviour
             yield return null;
         }
 
+    }
+
+    public void tvStatic()
+    {
+        noiseScreens.Play();
     }
 
     IEnumerator nextStage(){
@@ -243,6 +210,7 @@ public class FlickerLights : MonoBehaviour
 
         ui_handler.turnOnDataBreachScreens();
 
+
     }
 
     IEnumerator dimmingProcedure(){
@@ -260,5 +228,59 @@ public class FlickerLights : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////// BREACH -> SHELL
+    public void stopBreachAmbient() {
+        if (breachAmbient.isPlaying) breachAmbient.Stop();
+    }
+
+    public void revertToNormal()
+    {
+        //start tvnoise
+        noiseScreens.Play();
+
+        StartCoroutine(revertProcess());
+        ui_handler.turnOffDataBreachScreens();
+    }
+
+    IEnumerator revertProcess()
+    {
+        yield return new WaitForSeconds(1f);
+
+        tvNoiseControlTransparency.Play("tv_noise");
+
+        yield return new WaitForSeconds(4f);
+
+        video360Renderer.enabled = true;
+
+        //ROBERT: switch the skybox
+        RenderSettings.skybox = shellSkybox;
+        if (onMeadow) meadowAudio.SetActive(true);
+        breachAmbient.Stop();
+
+        yield return new WaitForSeconds(1f);
+
+        //robotObject.SetActive(true);
+
+        tvNoiseControlTransparency.Play("tv_noise_revert");
+        beachVideo.SetDirectAudioMute(0, false);
+        alarmAnimation.enabled = false;
+
+        //Destroy(alarmAnimation);
+        video360Renderer.material.color = Color.white;
+
+        yield return new WaitForSeconds(4f);
+
+        noiseScreens.Stop();
+        adsScreens.SetActive(true);
+
+        yield return null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////// OTHER
+    public void setMeadow(bool input)
+    {
+        onMeadow = input;
     }
 }

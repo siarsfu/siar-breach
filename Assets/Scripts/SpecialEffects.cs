@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Video;
 
 public class SpecialEffects : MonoBehaviour {
-
+    //////////////////////////////////////////////////////////////////////////// FIELDS //////////////////////////////////////////////////////////////////////
     public Animator staticAnimation;
     public VideoPlayer staticVideo;
     public Renderer staticRenderer;
@@ -15,33 +15,14 @@ public class SpecialEffects : MonoBehaviour {
     public Color finalColor;
 
     public Our_UI our_UI;
-    
-	// Use this for initialization
+
+    ////////////////////////////////////////////////////////////////////////////// START ////////////////////////////////////////////////////
 	void Start () {
         staticMaterial = staticRenderer.material;
         initialColor = staticMaterial.color;
         finalColor = initialColor;
         finalColor.a = 0.7f;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        /*
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            doTvStatic();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            our_UI.initiateDataBreach();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L)){
-            our_UI.endDataBreach();
-        }
-          */
-
-    }
 
     private void doTvStatic()
     {

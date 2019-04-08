@@ -142,7 +142,9 @@ public class OVRSceneSampleController : MonoBehaviour
         if (playerController != null)
             UpdateSpeedAndRotationScaleMultiplier();
 
+
         // Toggle Fullscreen
+        /*
         if (Input.GetKeyDown(KeyCode.F11))
             Screen.fullScreen = !Screen.fullScreen;
 
@@ -158,19 +160,21 @@ public class OVRSceneSampleController : MonoBehaviour
         if (Input.GetKeyDown(quitKey))
             Application.Quit();
 #endif
+  */
     }
     #endregion
-
+        
     /// <summary>
     /// Updates the vision mode.
     /// </summary>
     void UpdateVisionMode()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.F2))
         {
             visionMode ^= visionMode;
             OVRManager.tracker.isEnabled = visionMode;            
-        }
+        }*/
     }
 
     /// <summary>
@@ -180,7 +184,7 @@ public class OVRSceneSampleController : MonoBehaviour
     {
         float moveScaleMultiplier = 0.0f;
         playerController.GetMoveScaleMultiplier(ref moveScaleMultiplier);
-
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             moveScaleMultiplier -= speedRotationIncrement;
@@ -188,13 +192,13 @@ public class OVRSceneSampleController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             moveScaleMultiplier += speedRotationIncrement;
-        }
+        }*/
 
         playerController.SetMoveScaleMultiplier(moveScaleMultiplier);
 
         float rotationScaleMultiplier = 0.0f;
         playerController.GetRotationScaleMultiplier(ref rotationScaleMultiplier);
-
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             rotationScaleMultiplier -= speedRotationIncrement;
@@ -202,7 +206,7 @@ public class OVRSceneSampleController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             rotationScaleMultiplier += speedRotationIncrement;
-        }
+        }*/
 
         playerController.SetRotationScaleMultiplier(rotationScaleMultiplier);
     }    
@@ -212,7 +216,9 @@ public class OVRSceneSampleController : MonoBehaviour
     /// </summary>
     void UpdateRecenterPose()
     {
+        /*  ROBERT: DISABLED TO FIX ROTATION BUG. UNCOMMENT IF THIS FIX CAUSED ANY ISSUES.
         if (Input.GetKeyDown(KeyCode.R))
             OVRManager.display.RecenterPose();
+         */ 
     }
 }

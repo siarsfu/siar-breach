@@ -136,6 +136,7 @@ namespace TMPro.Examples
             {
                 mouseWheel *= 10;
 
+                /*
                 if (Input.GetKeyDown(KeyCode.I))
                     CameraMode = CameraModes.Isometric;
 
@@ -144,6 +145,7 @@ namespace TMPro.Examples
 
                 if (Input.GetKeyDown(KeyCode.S))
                     MovementSmoothing = !MovementSmoothing;
+                 */
 
 
                 // Check for right mouse button to change camera follow and elevation angle

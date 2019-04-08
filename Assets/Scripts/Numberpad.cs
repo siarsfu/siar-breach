@@ -5,23 +5,15 @@ using UnityEngine.UI;
 using TMPro;
 
 public class Numberpad : MonoBehaviour {
+    //UI CLASS: For Panels with Numberpad as Input type. Handles user input and submission of data to UI Handler.
+    //////////////////////////////////////////////////////////////////////////// FIELDS ///////////////////////////////////////////////////////////////////////
     string value;
     public TMP_Text outText;
     public TMP_Text outUnit;
     public UI_Handler ui_handler;
     public Button button;
     public GameObject ft_display;
-    public bool age;
-
-    // Use this for initialization
-    void Start () {
-
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public bool age, calories;
 
     public void pressZero() { value = value + "0"; UpdateText(); }
     public void pressOne() { value = value + "1"; UpdateText(); }
@@ -38,16 +30,23 @@ public class Numberpad : MonoBehaviour {
     public void pressCM() { outUnit.text = "cm"; ft_display.SetActive(false); }
     public void pressFT() { outUnit.text = ""; ft_display.SetActive(true); }
     public void pressBack() { value = value.Remove(value.Length - 1); UpdateText(); }
-    public void pressSubmitWeight () { ui_handler.AddKeyValue("Weight", value + outUnit.text); ui_handler.showNextPanel(); }
+    public void pressSubmitWeight () { 
+        ui_handler.AddKeyValue("Weight", value);
+        ui_handler.AddKeyValue("W_Unit", outUnit.text); 
+        ui_handler.showNextPanel(); 
+    }
     public void pressSubmitHeight() {
         //ft
         if (string.Compare(outUnit.text, "") == 0) {
             if (value.Length == 2) value = value[0] + "0" + value[1];
             ui_handler.AddKeyValue("Height", value[0] + "\'" + value[1] + value[2] + "\"");
+            ui_handler.AddKeyValue("H_Unit", "ft");
         } else //cm
         {
-            ui_handler.AddKeyValue("Height", value + outUnit.text);
+            ui_handler.AddKeyValue("Height", value);
+            ui_handler.AddKeyValue("H_Unit", outUnit.text);
         }
+
         ui_handler.showNextPanel();
     }
     public void pressSubmitAge() { 
@@ -56,12 +55,16 @@ public class Numberpad : MonoBehaviour {
         ui_handler.showNextPanel();
         Debug.Log("birthdate: " + birthdate);
     }
+    public void pressSubmitCalories()
+    {
+        ui_handler.AddKeyValue("Calories", value + "kcal"); ui_handler.showNextPanel();
+    }
 
 
-
+    /// Update displayed value, limit character length according to the question, set Submit button to be interactable if minimum character length is entered.
     private void UpdateText()
     {
-        if (age) {
+        if (age) {                  //Age
             if (value.Length <= 8)
             {
                 outText.text = value;
@@ -78,9 +81,26 @@ public class Numberpad : MonoBehaviour {
             {
                 value = value.Remove(value.Length - 1);
             }
+        } else if (calories) {      //Calories
+            if (value.Length <= 4)
+            {
+                outText.text = value;
+                if (value.Length >= 3)
+                {
+                    button.interactable = true;
+                }
+                else
+                {
+                    button.interactable = false;
+                }
+            }
+            else
+            {
+                value = value.Remove(value.Length - 1);
+            }
         }
         else
-        {
+        {                           //others: Weight, Height
             if (value.Length <= 3)
             {
                 outText.text = value;

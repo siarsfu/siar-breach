@@ -4,45 +4,66 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MyToggle : MonoBehaviour {
-
-    public Toggle sleepToggle;
+    //UI CLASS: For Panels with Toggles as Input type. Handles user input and submission of data to UI Handler.
+    //////////////////////////////////////////////////////////////////////////// FIELDS ///////////////////////////////////////////////////////////////////////
     public Toggle alcToggle;
     public Toggle canToggle;
     public Toggle tobToggle;
     public Toggle othToggle;
+    public Toggle cafToggle;
     public UI_Handler ui_handler;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Toggle nikToggle;
+    public Toggle adiToggle;
+    public Toggle undToggle;
+    public Toggle pumToggle;
+    public Toggle skeToggle;
+    public Toggle reeToggle;
+    public Toggle norToggle;
+    public Toggle oth2Toggle;
 
-    public void submitLightSleep() {
-        if (sleepToggle.isOn)
-        {
-            ui_handler.AddKeyValue("Is a light sleeper: ", "Yes"); 
-            ui_handler.showNextPanel();
-        }
-        else
-        {
-            ui_handler.AddKeyValue("Is a light sleeper: ", "No");
-            ui_handler.showNextPanel();
-        }
-    }
+    private bool lightSleep;
 
     public void submitDrugs()
     {
-        ui_handler.AddKeyValue("Consumes: Alcohol", convertBoolToString(alcToggle.isOn));
-        ui_handler.AddKeyValue("Consumes: Cannabis", convertBoolToString(canToggle.isOn));
-        ui_handler.AddKeyValue("Consumes: Tobacco", convertBoolToString(tobToggle.isOn));
-        ui_handler.AddKeyValue("Consumes: Other Drugs", convertBoolToString(othToggle.isOn));
+        string drugsConsumed = "";
+        if (alcToggle.isOn) drugsConsumed += "Alcohol, ";
+        if (canToggle.isOn) drugsConsumed += "Cannabis, ";
+        if (tobToggle.isOn) drugsConsumed += "Tobacco, ";
+        if (cafToggle.isOn) drugsConsumed += "Caffeine, ";
+        if (othToggle.isOn) drugsConsumed += "Other Drugs, ";
+        if (!drugsConsumed.Equals(""))
+        { 
+            drugsConsumed = drugsConsumed.Remove(drugsConsumed.Length - 2);
+        }
+        else
+        {
+            drugsConsumed = "No drugs";
+        }
+        ui_handler.AddKeyValue("Drugs_consumed", drugsConsumed);
         ui_handler.showNextPanel();
     }
 
-    private string convertBoolToString(bool input) { if (input) return "true"; else return "false"; }
+    public void submitBrands()
+    {
+        string favoriteBrands = "";
+        if (nikToggle.isOn) favoriteBrands += "Nike, ";
+        if (adiToggle.isOn) favoriteBrands += "Adidas, ";
+        if (undToggle.isOn) favoriteBrands += "Under Armour, ";
+        if (pumToggle.isOn) favoriteBrands += "Puma, ";
+        if (skeToggle.isOn) favoriteBrands += "Skechers, ";
+        if (reeToggle.isOn) favoriteBrands += "Reebok, ";
+        if (norToggle.isOn) favoriteBrands += "Northface, ";
+        if (oth2Toggle.isOn) favoriteBrands += "Other, ";
+        if (!favoriteBrands.Equals(""))
+        {
+            favoriteBrands = favoriteBrands.Remove(favoriteBrands.Length - 2);
+        }
+        else
+        {
+            favoriteBrands = "unknown";
+        }
+        ui_handler.AddKeyValue("Favorite_Sportsbrands", favoriteBrands);
+        ui_handler.showNextPanel();
+    }
 }

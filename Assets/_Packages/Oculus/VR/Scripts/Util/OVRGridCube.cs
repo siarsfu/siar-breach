@@ -67,6 +67,7 @@ public class OVRGridCube : MonoBehaviour
 
 	void UpdateCubeGrid()
 	{
+        /*
 		// Toggle the grid cube display on 'G'
 		if(Input.GetKeyDown(GridKey))
 		{
@@ -88,6 +89,7 @@ public class OVRGridCube : MonoBehaviour
 					CubeGrid.SetActive(false);
 			}
 		}
+         */
 		
 		if(CubeGrid != null)
 		{
