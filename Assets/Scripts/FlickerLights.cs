@@ -14,7 +14,7 @@ public class FlickerLights : MonoBehaviour
     public Material skyboxMat;
     public GameObject[] canvases;
 
-    public GameObject videoPlayerObject;
+    //public GameObject videoPlayerObject;
     public VideoPlayer videoPlayer;
 
     public Animator animator;
@@ -72,7 +72,7 @@ public class FlickerLights : MonoBehaviour
             canvases[i].SetActive(false);
         }
 
-        videoPlayerObject.SetActive(false);
+        //videoPlayerObject.SetActive(false);
 
     }
 

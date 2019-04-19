@@ -196,12 +196,174 @@ public class Auction : MonoBehaviour {
     readonly static string z_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(6)</color>";
     string[] z_array = { z_brands, z_weight, z_location_history, z_narcotic_use, z_age };
 
+    readonly static string za_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(11)</color>";
+    readonly static string za_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string za_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string za_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string za_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string za_calories = "<color=#3ea6f2>caloric_intake</color> == pending";
+    string[] za_array = { za_brands, za_weight, za_location_history, za_narcotic_use, za_age, za_calories };
+
+    readonly static string zb_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(11)</color>";
+    readonly static string zb_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string zb_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zb_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string zb_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zb_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(1)</color>";
+    string[] zb_array = { zb_brands, zb_weight, zb_location_history, zb_narcotic_use, zb_age, zb_calories };
+
+    readonly static string zc_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(11)</color>";
+    readonly static string zc_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string zc_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zc_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string zc_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zc_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    string[] zc_array = { zc_brands, zc_weight, zc_location_history, zc_narcotic_use, zc_age, zc_calories };
+
+    readonly static string zd_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(11)</color>";
+    readonly static string zd_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string zd_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zd_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string zd_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zd_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    string[] zd_array = { zd_brands, zd_weight, zd_location_history, zd_narcotic_use, zd_age, zd_calories };
+
+    readonly static string ze_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(12)</color>";
+    readonly static string ze_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string ze_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string ze_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string ze_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string ze_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    string[] ze_array = { ze_brands, ze_weight, ze_location_history, ze_narcotic_use, ze_age, ze_calories };
+
+    readonly static string zf_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(12)</color>";
+    readonly static string zf_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zf_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zf_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string zf_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zf_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    string[] zf_array = { zf_brands, zf_weight, zf_location_history, zf_narcotic_use, zf_age, zf_calories };
+
+    readonly static string zg_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(13)</color>";
+    readonly static string zg_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zg_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zg_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(6)</color>";
+    readonly static string zg_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zg_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    string[] zg_array = { zg_brands, zg_weight, zg_location_history, zg_narcotic_use, zg_age, zg_calories };
+
+    readonly static string zh_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(13)</color>";
+    readonly static string zh_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zh_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zh_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zh_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zh_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zh_height = "<color=#3ea6f2>height</color> == pending";
+    string[] zh_array = { zh_brands, zh_weight, zh_location_history, zh_narcotic_use, zh_age, zh_calories, zh_height };
+
+    readonly static string zi_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(13)</color>";
+    readonly static string zi_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zi_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zi_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zi_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zi_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zi_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(1)</color>";
+    string[] zi_array = { zi_brands, zi_weight, zi_location_history, zi_narcotic_use, zi_age, zi_calories, zi_height };
+
+    readonly static string zj_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(14)</color>";
+    readonly static string zj_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zj_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zj_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zj_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zj_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zj_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(1)</color>";
+    string[] zj_array = { zj_brands, zj_weight, zj_location_history, zj_narcotic_use, zj_age, zj_calories, zj_height };
+
+    readonly static string zk_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(14)</color>";
+    readonly static string zk_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zk_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zk_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zk_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zk_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zk_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(1)</color>";
+    string[] zk_array = { zk_brands, zk_weight, zk_location_history, zk_narcotic_use, zk_age, zk_calories, zk_height };
+
+    readonly static string zl_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(14)</color>";
+    readonly static string zl_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zl_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zl_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zl_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zl_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zl_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zl_current_location = "<color=#3ea6f2>current_location</color> == pending";
+    string[] zl_array = { zl_brands, zl_weight, zl_location_history, zl_narcotic_use, zl_age, zl_calories, zl_height, zl_current_location };
+
+    readonly static string zm_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(14)</color>";
+    readonly static string zm_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(7)</color>";
+    readonly static string zm_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zm_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zm_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zm_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zm_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zm_current_location = "<color=#3ea6f2>current_location</color> == <color=#b4353c>sold(1)</color>";
+    string[] zm_array = { zm_brands, zm_weight, zm_location_history, zm_narcotic_use, zm_age, zm_calories, zm_height, zm_current_location };
+
+    readonly static string zn_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(14)</color>";
+    readonly static string zn_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zn_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zn_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zn_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zn_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zn_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zn_current_location = "<color=#3ea6f2>current_location</color> == <color=#b4353c>sold(1)</color>";
+    string[] zn_array = { zn_brands, zn_weight, zn_location_history, zn_narcotic_use, zn_age, zn_calories, zn_height, zn_current_location };
+
+    readonly static string zo_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(14)</color>";
+    readonly static string zo_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zo_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zo_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zo_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zo_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(3)</color>";
+    readonly static string zo_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zo_current_location = "<color=#3ea6f2>current_location</color> == <color=#b4353c>sold(1)</color>";
+    string[] zo_array = { zo_brands, zo_weight, zo_location_history, zo_narcotic_use, zo_age, zo_calories, zo_height, zo_current_location };
+
+    readonly static string zp_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(14)</color>";
+    readonly static string zp_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zp_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zp_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zp_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zp_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(4)</color>";
+    readonly static string zp_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(2)</color>";
+    readonly static string zp_current_location = "<color=#3ea6f2>current_location</color> == <color=#b4353c>sold(1)</color>";
+    string[] zp_array = { zp_brands, zp_weight, zp_location_history, zp_narcotic_use, zp_age, zp_calories, zp_height, zp_current_location };
+
+    readonly static string zq_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(14)</color>";
+    readonly static string zq_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zq_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zq_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zq_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zq_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(4)</color>";
+    readonly static string zq_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(3)</color>";
+    readonly static string zq_current_location = "<color=#3ea6f2>current_location</color> == <color=#b4353c>sold(2)</color>";
+    string[] zq_array = { zq_brands, zq_weight, zq_location_history, zq_narcotic_use, zq_age, zq_calories, zq_height, zq_current_location };
+
+    readonly static string zr_brands = "<color=#3ea6f2>sport_brand</color> == <color=#b4353c>sold(14)</color>";
+    readonly static string zr_weight = "<color=#3ea6f2>weight</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zr_location_history = "<color=#3ea6f2>location_history</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zr_narcotic_use = "<color=#3ea6f2>narcotic_use</color> == <color=#b4353c>sold(9)</color>";
+    readonly static string zr_age = "<color=#3ea6f2>age</color> == <color=#b4353c>sold(8)</color>";
+    readonly static string zr_calories = "<color=#3ea6f2>caloric_intake</color> == <color=#b4353c>sold(4)</color>";
+    readonly static string zr_height = "<color=#3ea6f2>height</color> == <color=#b4353c>sold(3)</color>";
+    readonly static string zr_current_location = "<color=#3ea6f2>current_location</color> == <color=#b4353c>sold(2)</color>";
+    string[] zr_array = { zr_brands, zr_weight, zr_location_history, zr_narcotic_use, zr_age, zr_calories, zr_height, zr_current_location };
+
     //the idea here is to replace substrings within the Auction screen. The first set of substrings is defined in '_array". It is then
     //subsequently replaced by arrays 'a_array' - 'z_array', each time the timer expires.
 
     public TMP_Text textObject;
 
-    float timeLeft = 5;
+    float timeLeft = 4.5f;
     float origTimeLeft;
     int stage = 0;
 
@@ -249,6 +411,25 @@ public class Auction : MonoBehaviour {
                 if (stage == 23) replaceAllSubStrings(w_array, x_array);
                 if (stage == 24) replaceAllSubStrings(x_array, y_array);
                 if (stage == 25) replaceAllSubStrings(y_array, z_array);
+                if (stage == 26) replaceAllSubStrings(z_array, za_array);
+                if (stage == 27) replaceAllSubStrings(za_array, zd_array);
+                if (stage == 28) replaceAllSubStrings(zb_array, zc_array);
+                if (stage == 29) replaceAllSubStrings(zc_array, zd_array);
+                if (stage == 30) replaceAllSubStrings(zd_array, ze_array);
+                if (stage == 31) replaceAllSubStrings(ze_array, zf_array);
+                if (stage == 32) replaceAllSubStrings(zf_array, zg_array);
+                if (stage == 33) replaceAllSubStrings(zg_array, zh_array);
+                if (stage == 34) replaceAllSubStrings(zh_array, zi_array);
+                if (stage == 35) replaceAllSubStrings(zi_array, zj_array);
+                if (stage == 36) replaceAllSubStrings(zj_array, zk_array);
+                if (stage == 37) replaceAllSubStrings(zk_array, zl_array);
+                if (stage == 38) replaceAllSubStrings(zl_array, zm_array);
+                if (stage == 39) replaceAllSubStrings(zm_array, zn_array);
+                if (stage == 40) replaceAllSubStrings(zn_array, zo_array);
+                if (stage == 41) replaceAllSubStrings(zo_array, zp_array);
+                if (stage == 42) replaceAllSubStrings(zp_array, zq_array);
+                if (stage == 43) replaceAllSubStrings(zq_array, zr_array);
+                                                                           
                 stage++;
             }
         }
@@ -266,7 +447,7 @@ public class Auction : MonoBehaviour {
         {
             textObject.text = textObject.text.Replace(inArray[i], outArray[i]);
         }
-        origTimeLeft = origTimeLeft - .15f;
+        origTimeLeft = origTimeLeft - .07f;
         timeLeft = origTimeLeft;
         ping_audio.Play();
     }

@@ -54,10 +54,14 @@ public class UI_Handler : MonoBehaviour
     public TimeDisplay timeDisplay;
 
     public GameObject ourIdImg;
+    public GameObject runningCode;
 
     public AudioSource dialUp;
 
     public Auction auction;
+
+    public Instructor instructor;
+    
 
     //Processing Values
     public Hashtable dataTable = new Hashtable();
@@ -66,9 +70,9 @@ public class UI_Handler : MonoBehaviour
     GameObject[] user_UI_Panels = new GameObject[14]; //<-------- Hardcoded: set number of panels
 
     ////////////////////////////////////////////////////////////////////////////// START ////////////////////////////////////////////////////
-    void Start()
+    void Awake()
     {
-        Init_UI_system();
+       
         //make sure Cursor is visible
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -79,6 +83,7 @@ public class UI_Handler : MonoBehaviour
             else { user_UI_Panels[i] = GameObject.Find("Panel_" + i); }
         }
         for (int i = 1; i < user_UI_Panels.Length; i++) { user_UI_Panels[i].SetActive(false); }
+        Init_UI_system();
     }
 
     ///////////////////////////////////////////////////////////////////////////// UPDATE ////////////////////////////////////////////////////
@@ -110,21 +115,23 @@ public class UI_Handler : MonoBehaviour
     ///////////////////////////////////////////////////////////////////////// FILL TEXT OF FINAL SCREENS 
     public void setLeftWall()
     {
+        
         string leftWallL = (string)leftTextL.text;
         string leftWallR = (string)leftTextR.text;
 
         //############## parse left column
-        leftWallL = leftWallL.Replace("#NAME#", (string)dataTable["Name"]);
+        //leftWallL = leftWallL.Replace("#NAME#", (string)dataTable["Name"]);
         leftWallL = leftWallL.Replace("#DOB#", (string)dataTable["Birthdate"]);
         leftWallL = leftWallL.Replace("#GENDER#", (string)dataTable["Gender"]);
-        leftWallL = leftWallL.Replace("#PHONE#", (string)dataTable["Phone"]);
-        leftWallL = leftWallL.Replace("#EMAIL#", (string)dataTable["EMail"]);
+        //leftWallL = leftWallL.Replace("#PHONE#", (string)dataTable["Phone"]);
+        //leftWallL = leftWallL.Replace("#EMAIL#", (string)dataTable["EMail"]);
         leftWallL = leftWallL.Replace("#H_UNIT#", (string)dataTable["H_Unit"]);
         leftWallL = leftWallL.Replace("#W_UNIT#", (string)dataTable["W_Unit"]);
         leftWallL = leftWallL.Replace("#HEIGHT#", (string)dataTable["Height"]);
         leftWallL = leftWallL.Replace("#WEIGHT#", (string)dataTable["Weight"]);
 
         //############## parse right column
+        
         if (dataTable.ContainsKey("Place_of_birth")) {
             leftWallR = leftWallR.Replace("#POB#", (string)dataTable["Place_of_birth"]); 
         } else {
@@ -144,6 +151,7 @@ public class UI_Handler : MonoBehaviour
         //############## set text
         leftTextL.text = leftWallL;
         leftTextR.text = leftWallR;
+        
     }
 
     public void setRightWall()
@@ -163,31 +171,22 @@ public class UI_Handler : MonoBehaviour
         }
 
         //############## parse left column
-        rightWallL = rightWallL.Replace("#SITTINGHRS#", (string)dataTable["Hours_sitting"]);
-        rightWallL = rightWallL.Replace("#CALORIES#", (string)dataTable["Calories"]);
-        rightWallL = rightWallL.Replace("#ACTIVITYLEVEL#", (string)dataTable["Activity_Level"]);
-        rightWallL = rightWallL.Replace("#HOMEWORKOUT#", (string)dataTable["Days_working_out_home"]);
-        rightWallL = rightWallL.Replace("#GYMWORKOUT#", (string)dataTable["Days_working_out_gym"]);
-        rightWallL = rightWallL.Replace("#BRANDCHOICE#", limitedBrands);
+        rightWallL = rightWallL.Replace("#DOB#", (string)dataTable["Birthdate"]);
+        rightWallL = rightWallL.Replace("#GENDER#", (string)dataTable["Gender"]);
+        rightWallL = rightWallL.Replace("#H_UNIT#", (string)dataTable["H_Unit"]);
+        rightWallL = rightWallL.Replace("#W_UNIT#", (string)dataTable["W_Unit"]);
+        rightWallL = rightWallL.Replace("#HEIGHT#", (string)dataTable["Height"]);
+        rightWallL = rightWallL.Replace("#WEIGHT#", (string)dataTable["Weight"]);
+        rightWallL = rightWallL.Replace("#SLEEP#", (string)dataTable["Hours_sleeping"]);
+        rightWallL = rightWallL.Replace("#DRUGS#", (string)dataTable["Drugs_consumed"]);
 
         //############## parse right column
-        rightWallR = rightWallR.Replace("#SLEEP#", (string)dataTable["Hours_sleeping"]);
-        rightWallR = rightWallR.Replace("#DRUGS#", (string)dataTable["Drugs_consumed"]);
-        if (dataTable.ContainsKey("Employer")) {
-            rightWallR = rightWallR.Replace("#CURRENTEMPLOYER#", (string)dataTable["Employer"]); 
-        } else {
-            rightWallR = rightWallR.Replace("#CURRENTEMPLOYER#", "unavailable"); 
-        }
-        if (dataTable.ContainsKey("Past_employer")) {
-            rightWallR = rightWallR.Replace("#PASTEMPLOYER#", (string)dataTable["Past_employer"]); 
-        } else {
-            rightWallR = rightWallR.Replace("#PASTEMPLOYER#", "unavailable"); 
-        }
-        if (dataTable.ContainsKey("Past_employer_2")) {
-            rightWallR = rightWallR.Replace("#PASTEMPLOYER2#", (string)dataTable["Past_employer_2"]);
-        } else {
-            rightWallR = rightWallR.Replace("#PASTEMPLOYER2#", "unavailable");
-        }
+        rightWallR = rightWallR.Replace("#SITTINGHRS#", (string)dataTable["Hours_sitting"]);
+        rightWallR = rightWallR.Replace("#CALORIES#", (string)dataTable["Calories"]);
+        rightWallR = rightWallR.Replace("#ACTIVITYLEVEL#", (string)dataTable["Activity_Level"]);
+        rightWallR = rightWallR.Replace("#HOMEWORKOUT#", (string)dataTable["Days_working_out_home"]);
+        rightWallR = rightWallR.Replace("#GYMWORKOUT#", (string)dataTable["Days_working_out_gym"]);
+        rightWallR = rightWallR.Replace("#BRANDCHOICE#", limitedBrands);
 
         //set text
         rightTextL.text = rightWallL;
@@ -197,9 +196,9 @@ public class UI_Handler : MonoBehaviour
     public void setID()
     {
         string formattedname = "" + (string)dataTable["LName"] + ", \n" + (string)dataTable["FName"];
-        topText_name.text = formattedname;
-        topText_hair.text = (string)dataTable["Hair"];
-        topText_eyes.text = (string)dataTable["Eyes"];
+        //topText_name.text = formattedname;
+        //topText_hair.text = (string)dataTable["Hair"];
+        //topText_eyes.text = (string)dataTable["Eyes"];
         string genderString = "";
         if (((string)dataTable["Gender"]).Equals("Male")) genderString = "M"; if (((string)dataTable["Gender"]).Equals("Female")) genderString = "F";
         if (((string)dataTable["Gender"]).Equals("Other")) genderString = "X"; if (((string)dataTable["Gender"]).Equals("Not Specified")) genderString = "X";
@@ -239,10 +238,14 @@ public class UI_Handler : MonoBehaviour
         user_UI_Panels[curPanel].SetActive(false);
         if (!(curPanel == user_UI_Panels.Length - 1))
         {
+            Debug.Log("going to next panel");
             curPanel++;
             user_UI_Panels[curPanel].SetActive(true);
         }
-        else { FinalButton(); }
+        else {
+            Debug.Log("final_button");
+            FinalButton(); 
+        }
     }
 
     public void FinalButton()
@@ -251,17 +254,31 @@ public class UI_Handler : MonoBehaviour
         Debug.Log("EventSystem switched to: PC");
         User_UI.SetActive(false);
         Our_UI.SetActive(true);
-        pcInput.enabled = true;
-        vrInput.enabled = false;
-        MyEventSystem.GetComponent<EventSystem>().UpdateModules();
+        //pcInput.enabled = true;
+        //vrInput.enabled = false;
+        //MyEventSystem.GetComponent<EventSystem>().UpdateModules();
         //make sure Cursor is visible
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
         //add data to pc UI
         displayCollectedData();
         displayInit.setDoneWithUserUI();
         //disable Pointer line
         selectionVisualizer.SetActive(false);
+        instructor.startYogaSequence();
+    }
+
+    public void switchESbackToVR()
+    {
+        //Switch Eventsystem to Mouse input
+        Debug.Log("EventSystem switched to: VR");
+        Our_UI.SetActive(false);
+        //pcInput.enabled = false;
+        //vrInput.enabled = true;
+        //MyEventSystem.GetComponent<EventSystem>().UpdateModules();
+        //make sure Cursor is visible
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = false;
     }
 
     public void displayCollectedData()
@@ -283,6 +300,7 @@ public class UI_Handler : MonoBehaviour
     //////////////////////////////////// User Breach Buttons
     public void userBreachDelete() {
         deletePanel.SetActive(false);
+        runningCode.SetActive(false);
         ourIdImg.SetActive(false);
         auction.stopAuction();
         dialUp.Play();
@@ -298,22 +316,10 @@ public class UI_Handler : MonoBehaviour
 
     public void userBreachKeep() {
         deletePanel.SetActive(false);
+        runningCode.SetActive(false);
         flickerLights.revertToNormal();
         timeDisplay.startABreach();
     }
-
-    public void switchESbackToVR() {
-        //Switch Eventsystem to Mouse input
-        Debug.Log("EventSystem switched to: VR");
-        Our_UI.SetActive(false);
-        pcInput.enabled = false;
-        vrInput.enabled = true;
-        MyEventSystem.GetComponent<EventSystem>().UpdateModules();
-        //make sure Cursor is visible
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
-    }
-
 
 
     public Hashtable gimmeDatabase() {

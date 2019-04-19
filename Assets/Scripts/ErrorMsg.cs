@@ -12,6 +12,7 @@ public class ErrorMsg : MonoBehaviour {
     public AudioSource dialUp;
     public AudioSource errorAudio;
     public FlickerLights flickerLights;
+    public GameObject endingPrompt;
 
     string origText = "";
     float timeLeft = 8;
@@ -40,6 +41,7 @@ public class ErrorMsg : MonoBehaviour {
             yield return new WaitForSeconds(.05f);
         }
         typingF.Stop();
+        endingPrompt.SetActive(true);
     }
 
     //play SFX, activate VFX, start Typewriter Coroutine and set the new Text (to Error Message)

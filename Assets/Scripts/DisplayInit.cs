@@ -18,8 +18,7 @@ public class DisplayInit : MonoBehaviour
         Debug.Log("displays connected: " + Display.displays.Length);
         // Display.displays[0] is the primary, default display and is always ON.
         // Check if additional displays are available and activate each.
-        if (Display.displays.Length > 1) Display.displays[1].Activate();
-        if (Display.displays.Length > 2) Display.displays[2].Activate();
+        //if (Display.displays.Length > 1) Display.displays[1].Activate();
 
         //set up the Displays to render to correct screens.
         ui_cam.targetDisplay = 1;
@@ -45,11 +44,11 @@ public class DisplayInit : MonoBehaviour
     public void setDoneWithUserUI()
     {
         doneWithUserUI = true;
-        ui_cam.targetDisplay = 0;
+        //ui_cam.targetDisplay = 0;
     }
 
     public void setDoneWithOurUI() {
-        ui_cam.targetDisplay = 1;
+        //ui_cam.targetDisplay = 1;
         our_ui.SetActive(false);
         doneWithOurUI = true;
     }

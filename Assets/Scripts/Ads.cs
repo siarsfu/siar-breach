@@ -6,12 +6,18 @@ using UnityEngine.UI;
 public class Ads : MonoBehaviour {
     //Class does 2 main jobs: 1) Check what data is available and decide what ads to show. 2) Show ads one by one using a timer.
     //////////////////////////////////////////////////////////////////////////// FIELDS ///////////////////////////////////////////////////////////////////////
-    public Texture [] genericAds; //(textures for generic ads)
-    public Texture coffeeAd;    //|(textures for targeted ads)
-    public Texture cannabisAd;  //|
-    public Texture tobaccoAd;   //|
-    public Texture northFaceAd; //|
-    public Texture pumaAd;      //|
+    public Texture [] genericAds;   //(textures for generic ads)
+    public Texture coffeeAd;        //|(textures for targeted ads)
+    public Texture cannabisAd;      //|
+    public Texture tobaccoAd;       //|
+    public Texture northFaceAd;     //|
+    public Texture pumaAd;          //|
+    public Texture alcoholAd;       //|--- new targeted ads starting from here
+    public Texture nikeAd;          //|
+    public Texture adidasAd;        //|
+    public Texture underArmourAd;   //|
+    public Texture skechersAd;      //|
+    public Texture reebokAd;        //|
     
     public UI_Handler ui_handler;
     public RawImage[] allImageObjects; //RawImage Component r
@@ -19,7 +25,9 @@ public class Ads : MonoBehaviour {
 
     private GameObject[] imageObjectGOs; //references to the GameObjects holding the RawImage components (to hide / show)
 
-    float timeLeft = 0.7f;
+    public GameObject endingPrompt;
+
+    float timeLeft = 0.6f;
     float origTimeLeft;
     bool timerStarted = false;
     bool done = false;
@@ -41,8 +49,14 @@ public class Ads : MonoBehaviour {
         if (((string)ui_handler.dataTable["Drugs_consumed"]).Contains("Caffeine")) availableData.Add((Texture)coffeeAd);
         if (((string)ui_handler.dataTable["Drugs_consumed"]).Contains("Cannabis")) availableData.Add((Texture)cannabisAd);
         if (((string)ui_handler.dataTable["Drugs_consumed"]).Contains("Tobacco")) availableData.Add((Texture)tobaccoAd);
+        if (((string)ui_handler.dataTable["Drugs_consumed"]).Contains("Alcohol")) availableData.Add((Texture)alcoholAd);
         if (((string)ui_handler.dataTable["Favorite_Sportsbrands"]).Contains("Northface")) availableData.Add((Texture)northFaceAd);
         if (((string)ui_handler.dataTable["Favorite_Sportsbrands"]).Contains("Puma")) availableData.Add((Texture)pumaAd);
+        if (((string)ui_handler.dataTable["Favorite_Sportsbrands"]).Contains("Nike")) availableData.Add((Texture)nikeAd);
+        if (((string)ui_handler.dataTable["Favorite_Sportsbrands"]).Contains("Adidas")) availableData.Add((Texture)adidasAd);
+        if (((string)ui_handler.dataTable["Favorite_Sportsbrands"]).Contains("Under Armour")) availableData.Add((Texture)underArmourAd);
+        if (((string)ui_handler.dataTable["Favorite_Sportsbrands"]).Contains("Skechers")) availableData.Add((Texture)skechersAd);
+        if (((string)ui_handler.dataTable["Favorite_Sportsbrands"]).Contains("Reebok")) availableData.Add((Texture)reebokAd);
 
         //creat boolean array to see which ads should be targeted
         bool[] replaceWithTargetedAd = new bool[allImageObjects.Length];
@@ -50,7 +64,7 @@ public class Ads : MonoBehaviour {
         if (availableData.Count > 0)
         {
             //calculate how many targeted ads there should be in total
-            int numberOfAdsToTarget = mapNumber(availableData.Count, 1, 5, (int)allImageObjects.Length/6, (int)allImageObjects.Length / 2);
+            int numberOfAdsToTarget = mapNumber(availableData.Count, 1, 11, (int)allImageObjects.Length/6, (int)((allImageObjects.Length / 5)*4));
 
             int amountOfIndexesSet = 0;
             //randomly assign indexes of the random ads (so they are spread equally throughout the panels)
@@ -136,6 +150,7 @@ public class Ads : MonoBehaviour {
                 {
                     done = true;
                     Debug.Log("DONE DISPLAYING ADS");
+                    endingPrompt.SetActive(true);
                 }
             }
         }

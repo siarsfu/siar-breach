@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class MultiBtn : MonoBehaviour {
     //UI CLASS: For Panels with Multiple Choice Buttons as Input type. Handles user input and submission of data to UI Handler.
     //////////////////////////////////////////////////////////////////////////// FIELDS ///////////////////////////////////////////////////////////////////////
@@ -17,9 +18,13 @@ public class MultiBtn : MonoBehaviour {
     public AnswerSets question;
     public GameObject BeachSphere;
     public GameObject MeadowSound;
+    public GameObject BeachSound;
+    public GameObject BeachSound2;
     public Button meadowButton;
     public Button beachButton;
     public FlickerLights flickerLights;
+    public Instructor instructor;
+    private bool onBeach;
 
     public void submitMultiBtn(string value) {
         if (question == AnswerSets.Gender) 
@@ -44,11 +49,16 @@ public class MultiBtn : MonoBehaviour {
 
             ColorBlock blueBlock = meadowButton.colors;
             blueBlock.normalColor = new Color(0.35f, 0.51f, 0.77f, 1f);
+            blueBlock.highlightedColor = new Color(0.46f, 0.59f, 0.81f, 1f);
+            blueBlock.pressedColor = new Color(0.87f, 0.32f, 0f, 1f);
             meadowButton.colors = blueBlock;
 
             BeachSphere.SetActive(true);
             MeadowSound.SetActive(false);
+            BeachSound.SetActive(true);
+            BeachSound2.SetActive(true);
             flickerLights.setMeadow(false);
+            onBeach = true;
         }
         else
         {
@@ -60,16 +70,22 @@ public class MultiBtn : MonoBehaviour {
 
             ColorBlock blueBlock = beachButton.colors;
             blueBlock.normalColor = new Color(0.35f, 0.51f, 0.77f, 1f);
+            blueBlock.highlightedColor = new Color(0.46f, 0.59f, 0.81f, 1f);
+            blueBlock.pressedColor = new Color(0.87f, 0.32f, 0f, 1f);
             beachButton.colors = blueBlock;
 
             BeachSphere.SetActive(false);
             MeadowSound.SetActive(true);
+            BeachSound.SetActive(false);
+            BeachSound2.SetActive(false);
             flickerLights.setMeadow(true);
+            onBeach = false;
         }
     }
 
     public void submitEnvironment()
     {
         ui_handler.showNextPanel();
+        instructor.setEnvironment(onBeach);
     }
 }

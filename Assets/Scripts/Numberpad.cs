@@ -29,7 +29,7 @@ public class Numberpad : MonoBehaviour {
     public void pressLB() { outUnit.text = "lb"; }
     public void pressCM() { outUnit.text = "cm"; ft_display.SetActive(false); }
     public void pressFT() { outUnit.text = ""; ft_display.SetActive(true); }
-    public void pressBack() { value = value.Remove(value.Length - 1); UpdateText(); }
+    public void pressBack() { if (value.Length > 0) value = value.Remove(value.Length - 1); UpdateText(); }
     public void pressSubmitWeight () { 
         ui_handler.AddKeyValue("Weight", value);
         ui_handler.AddKeyValue("W_Unit", outUnit.text); 

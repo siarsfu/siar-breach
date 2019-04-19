@@ -44,8 +44,10 @@ public class Typewriter : MonoBehaviour {
     public UI_Handler ui_handler;
 
     bool firstRun = true;
+    bool coroutineStarted = false;
 
     public GameObject idPic;
+    public GameObject runningCode;
 
     ////////////////////////////////////////////////////////////////////// AWAKE /////////////////////////////////////////////////////////////
     void Awake()
@@ -59,7 +61,18 @@ public class Typewriter : MonoBehaviour {
     void Update()
     {
         //activate delete prompt when Tab is pressed
-        if (Input.GetKeyDown(KeyCode.Tab) && isFront && doneAnimatingText) { activatePrompt(); ui_handler.activatePointer();  }
+        if (isFront && doneAnimatingText && !coroutineStarted)
+        {
+            StartCoroutine(hackerPromptTimer());
+            coroutineStarted = true;
+        }
+    }
+
+    IEnumerator hackerPromptTimer()
+    {
+        yield return new WaitForSeconds(60);
+        activatePrompt();
+        ui_handler.activatePointer();
     }
 
     /////////////////////////////////////////////////////////////////// ANIMATETEXT 
@@ -92,7 +105,7 @@ public class Typewriter : MonoBehaviour {
         if (isRR && typingRR.isPlaying) typingRR.Stop();
         if (isB && typingB.isPlaying) typingB.Stop();
 
-        if (isFront && firstRun) idPic.SetActive(true);
+        if (isFront && firstRun) { idPic.SetActive(true); runningCode.SetActive(true); }
         firstRun = false;
     }
 
@@ -102,9 +115,9 @@ public class Typewriter : MonoBehaviour {
         //play audio
         if (isFront && !activatingPrompt && !text2speech1.isPlaying) text2speech1.Play();
         if (isFront && activatingPrompt && !text2speech2.isPlaying) text2speech2.Play();
-        if (isLL && !typingLL.isPlaying) typingLL.Play();
+        //if (isLL && !typingLL.isPlaying) typingLL.Play();
         if (isRL && !typingRL.isPlaying) typingRL.Play();
-        if (isLR && !typingLR.isPlaying) typingLR.Play();
+        //if (isLR && !typingLR.isPlaying) typingLR.Play();
         if (isRR && !typingRR.isPlaying) typingRR.Play();
         if (isB && !typingB.isPlaying) typingB.Play();
     }
@@ -126,9 +139,9 @@ public class Typewriter : MonoBehaviour {
         }
 
         //stop audio
-        if (isLL && typingLL.isPlaying) typingLL.Stop();
+        //if (isLL && typingLL.isPlaying) typingLL.Stop();
         if (isRL && typingRL.isPlaying) typingRL.Stop();
-        if (isLR && typingLR.isPlaying) typingLR.Stop();
+        //if (isLR && typingLR.isPlaying) typingLR.Stop();
         if (isRR && typingRR.isPlaying) typingRR.Stop();
         if (isB && typingB.isPlaying) typingB.Stop();
     }
@@ -151,5 +164,7 @@ public class Typewriter : MonoBehaviour {
         activatingPrompt = true;
         reverseAnimateText();
     }
+
+    
 
 }

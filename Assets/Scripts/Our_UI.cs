@@ -29,7 +29,7 @@ public class Our_UI : MonoBehaviour {
     public TrailRenderer trailL;
 
 
-    private bool dataBreachAlreadyInitiated;
+    private bool dataBreachAlreadyInitiated = false;
 
     public void initiateYogaExercise()
     {
@@ -70,7 +70,7 @@ public class Our_UI : MonoBehaviour {
             if (!eyes.text.Equals("")) ui_handler.AddKeyValue("Eyes", (string)(eyes.text));
 
             ////////////////////////// SET WALLS ////////
-            ui_handler.setLeftWall();
+            //ui_handler.setLeftWall();
             ui_handler.setRightWall();
             ui_handler.setID();
 
